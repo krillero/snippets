@@ -17,6 +17,7 @@ function callAjaxAction_jquery(action, indata, callback = null) {
         type: "post",
         beforeSend: function(xhr) {
             // https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/
+            // 'X-WP-Nonce' becomes 'HTTP_X_WP_NONCE' when sent so to access it on the php server use $_SERVER['HTTP_X_WP_NONCE']
             xhr.setRequestHeader("X-WP-Nonce", MyAjax.nonce);
         },
         data: indata,

@@ -1,5 +1,7 @@
 <?php
 
+//todo figure out how and why !( defined( 'DOING_AJAX' ) && DOING_AJAX works
+
 /*--------------------------------------------------------------
 	Block access to wp-admin for specific roles
 --------------------------------------------------------------*/
@@ -17,6 +19,5 @@ function blockusers_init() {
 		exit;
 	}
 }
-
 
 ?>
