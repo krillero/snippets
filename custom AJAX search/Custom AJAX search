@@ -1,1 +1,11 @@
 Custom AJAX search
+
+
+/********************************
+	template-customfilter.php
+*********************************/
+
+Filters CPT-posts based on chosen taxonomy or published year
+
+Has a form with filter input at the top of the page as well as a sidebar that mirrors the selected filters of the main form. 
+There is only one form that sends input. When the sidebar is used the choices are mirrored in the main form with javascript and the main form is submitted.
