@@ -1,0 +1,24 @@
+Translating field labels - 3 steps:
+This works even if you print the labels on the front-end with acf_form()
+
+1:
+Registering fields with php: make field label translatable with pixel_pll__()
+
+acf_add_local_field (
+	array (
+		'parent' => $group_key,
+		'key' => $key_prefix . $section . $column . '90',
+		'label' => pixel_pll__('Clinic address'),
+		'name' => 'user_clinic_address',
+		'type' => 'text',
+	)
+);
+
+2:
+Register strings with polylang (functions.php)
+
+pll_register_string( 'theme', 'Clinic address');
+
+
+3:
+Translate the strings in wp-admin under Languages -> Strings translations
