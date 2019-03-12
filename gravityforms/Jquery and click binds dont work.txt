@@ -1,0 +1,18 @@
+Viktigt: Jquery and .click() binds dont work after ajax call, 
+
+Use .on('click'), '.target_class', function() {});
+
+Example, instead of:
+
+$('.checkbox-accordion > label').click( function() {
+   $(this).parent().toggleClass( 'open' );
+   // console.log('accordion 1');
+});
+
+
+use this instead, and make a class that is always present in the div containing the gravity form:
+
+$('.gravity-outer-container').on('click', '.checkbox-accordion > label', function() {
+    $(this).parent().toggleClass( 'open' );
+    // console.log('accordion');
+});
