@@ -1,0 +1,28 @@
+Base:
+Advanced Custom Fields PRO
+Classic Editor
+Gravity Forms
+ManageWP - Worker
+Smush
+WP GDPR Compliance
+
+
+Extra (kan tas bort om de inte behövs):
+Gravity Perks
+Polylang
+Search & Filter Pro
+Relevanssi
+
+
+Kontroll av wp-admin:
+Activity Log
+User Switching
+WP Mail Logging
+
+
+Vid lansering:
+Wordfence Security
+WP Rocket (cache-plugin)
+Better Search Replace (ersätter url:er i databasen)
+Yoast SEO
+ACF Content Analysis for Yoast SEO
