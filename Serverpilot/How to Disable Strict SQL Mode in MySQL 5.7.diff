@@ -1,0 +1,40 @@
+- How to Disable Strict SQL Mode in MySQL 5.7
+
+! https://serverpilot.io/docs/how-to-disable-strict-mode-in-mysql-5-7
+
+If your app was written for older versions of MySQL and is not compatible with strict SQL mode in MySQL 5.7, 
+you can disable strict SQL mode. For example, apps such as WHMCS 6 and Craft 2 do not support strict SQL mode.
+
+If you're using WHMCS 7, see our article on customizing MySQL for WHMCS 7.
+
++ To disable strict SQL mode, SSH in to your server as root and create a new configuration file using nano or the editor of your choice:
+
+sudo nano /etc/mysql/conf.d/disable_strict_mode.cnf
+
++ In the file, enter these two lines:
+
+[mysqld]
+sql_mode=IGNORE_SPACE,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+
++ Save the file by pressing CTRL + X, then y, then ENTER to confirm changes.
++ Finally, restart MySQL with this command:
+
+sudo service mysql restart
+
++ This change disables two SQL mode settings, STRICT_TRANS_TABLES and ONLY_FULL_GROUP_BY, that were added in MySQL 5.7 and cause problems for some older applications.
+
++ Confirming Strict SQL Mode Is Disabled
++ You can confirm strict SQL mode is disabled by running this command as root:
+
+sudo mysql -i -BN -e 'SELECT @@sql_mode' | grep -E 'ONLY_FULL_GROUP_BY|STRICT_TRANS_TABLES'
+
++ If strict mode is disabled, you won't see any output from that command.
++ If disabling strict mode causes any problems for you, you can re-enable it by deleting that file and restarting MySQL again.
+
++ What Strict SQL Mode Errors Look Like
++ If your app isn't compatible with strict SQL mode, you'll often see SQL errors such as:
+
+SQLSTATE[42000]: Syntax error or access violation: 1055 Expression #1 of
+SELECT list is not in GROUP BY clause and contains nonaggregated column
+'yourdbname.tblannouncements.date' which is not functionally dependent on
+columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by

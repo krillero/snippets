@@ -1,0 +1,40 @@
+- PHP change locale
+
+! https://serverpilot.io/docs/how-to-install-locales
+
++ How to Install Locales
+Installing additional locales enables you to use PHP's setlocale() function so various other functions, such as localeconv() and strftime(), will return text formatted for a specific language or region.
+
++ Listing the Installed Locales
+To list the installed locales, SSH into your server and run the command:
+
+locale -a
+
+The output of that command will look like this, though your installed locales may be different from the ones shown here:
+
+# locale -a
+C
+C.UTF-8
+en_US.utf8
+fr_BE.utf8
+fr_CA.utf8
+fr_FR.utf8
+nl_BE.utf8
+nl_NL.utf8
+POSIX
+
++ Installing a New Locale
+To install a new locale, SSH in as root and run the command:
+
+sudo apt-get install language-pack-XX
+Replace "XX" in the above command with the locale you want to install; for example, to install the Spanish locale, use this command as root:
+
+sudo apt-get install language-pack-es
+Once installed, you must restart each PHP version your apps are using so your apps will be able to see the newly installed locale. For example, to restart PHP 7.0, use this command as root:
+
+sudo service php7.0-fpm-sp restart
+
++ Available Locales
+You can list all locales available for installation with the command:
+
+apt-cache search language-pack- | grep -v -E -- '-kde|-base|-gnome'
