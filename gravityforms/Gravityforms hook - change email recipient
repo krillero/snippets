@@ -11,7 +11,7 @@ function pixel_activate_gforms_testmode() {
 }
 
 function before_email( $email ) {
-	$email['to'] = 'krister@pixeltokig.se';
+	$email['to'] = 'test@test.se';
 	$email['headers']['Cc'] = '';
 	$email['headers']['Bcc'] = '';
 	return $email;
@@ -20,7 +20,7 @@ function before_email( $email ) {
 function pixel_admin_notice() {
 	?>
 	<div class="notice notice-warning">
-		<p><?php _e( 'Test-mode enabled for gravity forms, all notification emails are sent to krister@pixeltokig.se instead of the chosen address', 'sample-text-domain' ); ?></p>
+		<p><?php _e( 'Test-mode enabled for gravity forms, all notification emails are sent to test@test.se instead of the chosen address', 'sample-text-domain' ); ?></p>
 	</div>
 	<?php
 }
