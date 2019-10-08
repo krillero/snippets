@@ -3,12 +3,30 @@ Gravityforms hook - change email recipient
 https://docs.gravityforms.com/gform_pre_send_email/
 
 
-// todo: Ändrar mottagare för alla mail som skickas ut av gravity forms
-// Change email recipient, and remove all CC and BCC
-add_filter( 'gform_pre_send_email', 'before_email' );
+// ---------- Test mode - redirect all notification emails to another email address -----------------
+
+function pixel_activate_gforms_testmode() {
+	add_filter( 'gform_pre_send_email', 'before_email' );
+	add_action( 'admin_notices', 'pixel_admin_notice' );
+}
+
 function before_email( $email ) {
 	$email['to'] = 'krister@pixeltokig.se';
 	$email['headers']['Cc'] = '';
 	$email['headers']['Bcc'] = '';
 	return $email;
 }
+
+function pixel_admin_notice() {
+	?>
+	<div class="notice notice-warning">
+		<p><?php _e( 'Test-mode enabled for gravity forms, all notification emails are sent to krister@pixeltokig.se instead of the chosen address', 'sample-text-domain' ); ?></p>
+	</div>
+	<?php
+}
+
+// todo: Ändrar mottagare för alla mail som skickas ut av gravity forms
+// Change email recipient, and remove all CC and BCC
+pixel_activate_gforms_testmode();
+
+// ---------- End of Test mode ---------------------------------------------------------------------
