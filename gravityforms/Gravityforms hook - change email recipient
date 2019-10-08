@@ -1,0 +1,14 @@
+Gravityforms hook - change email recipient
+
+https://docs.gravityforms.com/gform_pre_send_email/
+
+
+// todo: Ändrar mottagare för alla mail som skickas ut av gravity forms
+// Change email recipient, and remove all CC and BCC
+add_filter( 'gform_pre_send_email', 'before_email' );
+function before_email( $email ) {
+	$email['to'] = 'krister@pixeltokig.se';
+	$email['headers']['Cc'] = '';
+	$email['headers']['Bcc'] = '';
+	return $email;
+}
