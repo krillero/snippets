@@ -1,0 +1,5 @@
+Lokal utveckling: Lando eller Docker
+Tema: Sage ( Blade (Laravel) )
+Css: Tailwind ( SCSS )
+Git-vänligt: bedrock
+Composer
