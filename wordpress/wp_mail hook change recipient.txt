@@ -1,18 +1,41 @@
+
+/*******************************************************************
+    wp_mail() TEST MODE
+ ******************************************************************/
+
+function pixel_activate_wp_mail_testmode() {
+	add_filter('wp_mail','pixel_redirect_mails', 10,1);
+	add_action( 'admin_notices', 'pixel_wp_mail_admin_notice' );
+}
+
 //wp_mail hook change email recipient to chosen address
 add_filter('wp_mail','pixel_redirect_mails', 10,1);
-function pixel_redirect_mails($args){
-
+function pixel_redirect_mails($args) {
 	$email = 'test@test.se';
 
-    //$args['subject']
-    //$args['message']
-    //$args['headers']
-    //$args['attachments']
+	//$args['subject']
+	//$args['message']
+	//$args['headers']
+	//$args['attachments']
 
-    $args['to'] = $email;
-    $args['headers'] = '';
+	$args['to'] = $email;
+	$args['headers'] = '';
 
-    return $args;
-  }
+	return $args;
+}
 
-?>
+function pixel_wp_mail_admin_notice() {
+	?>
+	<div class="notice notice-warning">
+		<p><?php _e( 'Test-mode enabled for wp_mail(), all wordpress emails are sent to pixeltokig instead of the chosen address', 'pixeltokig' ); ?></p>
+	</div>
+	<?php
+}
+
+// todo: Ändrar mottagare för alla mail som skickas ut av wordpress
+// Change email recipient, and remove all CC and BCC
+pixel_activate_wp_mail_testmode();
+
+/*******************************************************************
+	END OF wp_mail() TEST MODE
+ ******************************************************************/
