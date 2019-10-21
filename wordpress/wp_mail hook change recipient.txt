@@ -1,0 +1,18 @@
+//wp_mail hook change email recipient to chosen address
+add_filter('wp_mail','pixel_redirect_mails', 10,1);
+function pixel_redirect_mails($args){
+
+	$email = 'test@test.se';
+
+    //$args['subject']
+    //$args['message']
+    //$args['headers']
+    //$args['attachments']
+
+    $args['to'] = $email;
+    $args['headers'] = '';
+
+    return $args;
+  }
+
+?>
