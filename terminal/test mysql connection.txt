@@ -1,0 +1,3 @@
+test mysql connection
+ssh username@ip-adress
+mysql -u database-username -h localhost -p database-name

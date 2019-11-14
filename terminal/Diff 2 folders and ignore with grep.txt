@@ -1,0 +1,5 @@
+Diff 2 folders and ignore with grep
+
+diff -rqw sparks-staging sparks-prod2 | grep -Ev ".idea|.css"
+
+diff -rqw folkochforsvar-staging folkochforsvar-prod | grep -Ev ".idea|node_modules"
