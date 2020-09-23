@@ -1,0 +1,21 @@
+Folder name: www/nordlei-one-page
+Local url: nordlei-one-page.local
+
+Add "127.0.0.1   nordlei-one-page.local" to hosts file
+
+Add VirtualHost to httpd.conf:
+
+<VirtualHost 127.0.0.1:80>
+<Directory "{$path}/www/nordlei-one-page">
+    Options FollowSymLinks Indexes
+    AllowOverride All
+    Order deny,allow
+    allow from All
+</Directory>
+ServerName nordlei-one-page.local
+ServerAlias localhost 127.0.0.1
+ScriptAlias /cgi-bin/ "{$path}/www/cgi-bin/"
+DocumentRoot "{$path}/www/nordlei-one-page"
+ErrorLog "{$path}/apache/logs/error.log"
+CustomLog "{$path}/apache/logs/access.log" combined
+</VirtualHost>
