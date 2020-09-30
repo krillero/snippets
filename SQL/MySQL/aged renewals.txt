@@ -1,0 +1,5 @@
+SELECT lei_code.value LEI, nmd.value NMD, l.document_collection_manual_aged, l.document_collection_email, l.document_collection_provided, l.document_collection_disabled, l.document_collection_finalised FROM lei l
+INNER JOIN lei_attr_val lei_code ON (l.id = lei_code.lei_id AND l.timestamp = lei_code.timestamp AND lei_code.attr_id = '2808944dfb6dc610dc51bffeb15b09be0b6e9718')
+inner join lei_attr_val nmd on (l.id = nmd.lei_id and l.timestamp = nmd.timestamp and nmd.attr_id = '6cc9915e71ca2a48341f88ab31d2e92febcfdcf6')
+WHERE l.document_collection_manual_aged = 1
+ORDER BY NMD asc

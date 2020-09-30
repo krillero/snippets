@@ -1,0 +1,17 @@
+if you use AMPPS Software check (AMPPS installation directory)\PHP for existing file cacert.pem. If dosent exist make filecacert.pem` in PHP directory of installation path.
+
+copy content of this(http://curl.haxx.se/ca/cacert.pem) file then Paste in "cacert.pem" in PHP directory.
+
+Now we need make path to file cacert.pem:
+
+open PHP.ini file (if you use AMPPS you can right click on AMPPS icon on taskbar then Configuration then php)
+
+search tag [curl] , then
+
+under tag [curl] change line ;curl.cainfo = to curl.cainfo ={$path}\\{$php_dir}\cacert.pem (this is path of cacert.pem )
+
+save file php.ini
+
+you need to restart php
+
+in ampps right click on icon of ampps on taskbar and select stop wait two seconds and then select start
