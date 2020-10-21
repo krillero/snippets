@@ -1,0 +1,5 @@
+Install curl from https://curl.haxx.se/download.html
+Run cmd and change to curl.exe directory to be able to run curl commands
+
+curl with Header set:
+curl -i -H "Authorization: {secret}" https://api.example.com
