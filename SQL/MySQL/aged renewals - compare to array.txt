@@ -1,0 +1,10 @@
+Get document collection status and LEI status for LEI in array
+SELECT lei_code.value LEI, legal_name.value LEGAL_NAME, nmd.value NMD, status_name.name STATUS, legal_coll.value COUNTRY, l.document_collection_manual_aged, l.document_collection_email, l.document_collection_provided, l.document_collection_disabled, l.document_collection_finalised FROM nordlei_prod.lei l
+INNER JOIN nordlei_prod.lei_attr_val lei_code ON (l.id = lei_code.lei_id AND l.timestamp = lei_code.timestamp AND lei_code.attr_id = '2808944dfb6dc610dc51bffeb15b09be0b6e9718')
+INNER JOIN nordlei_prod.lei_attr_val nmd on (l.id = nmd.lei_id and l.timestamp = nmd.timestamp and nmd.attr_id = '6cc9915e71ca2a48341f88ab31d2e92febcfdcf6')
+INNER JOIN nordlei_prod.lei_attr_val legal_name on (l.id = legal_name.lei_id and l.timestamp = legal_name.timestamp and legal_name.attr_id = 'a58a35ed0ee11724b1016b67ec74315189ef647a')
+INNER JOIN nordlei_prod.lei_attr_val status_id on (l.id = status_id.lei_id and l.timestamp = status_id.timestamp and status_id.attr_id = '77cbcafc132f402fbd4123625b869ad35ec0afa2')
+INNER JOIN nordlei_prod.lei_status_def status_name on (status_id.value = status_name.id)
+INNER JOIN nordlei_prod.lei_attr_val legal_coll on (l.id = legal_coll.lei_id and l.timestamp = legal_coll.timestamp and legal_coll.attr_id = '76c057ab2d14d1cc43914b408929e20613866097')
+WHERE lei_code.value IN ( '549300FO63KY20G1VH45', '549300TCNNGQ2462YD49' )
+ORDER BY NMD asc

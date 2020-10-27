@@ -1,0 +1,7 @@
+SELECT lei_code.value LEI, name.value NAME, country.value COUNTRY, nmd.value NMD, l.document_collection_manual_aged, l.document_collection_email, l.document_collection_provided, l.document_collection_disabled, l.document_collection_finalised FROM lei l
+INNER JOIN lei_attr_val lei_code ON (l.id = lei_code.lei_id AND l.timestamp = lei_code.timestamp AND lei_code.attr_id = '2808944dfb6dc610dc51bffeb15b09be0b6e9718')
+inner join lei_attr_val nmd on (l.id = nmd.lei_id and l.timestamp = nmd.timestamp and nmd.attr_id = '6cc9915e71ca2a48341f88ab31d2e92febcfdcf6')
+INNER JOIN lei_attr_val name ON (l.id = name.lei_id AND l.timestamp = name.timestamp AND name.attr_id = 'a58a35ed0ee11724b1016b67ec74315189ef647a')
+INNER JOIN lei_attr_val country ON (l.id = country.lei_id AND l.timestamp = country.timestamp AND country.attr_id = '76c057ab2d14d1cc43914b408929e20613866097')
+WHERE l.document_collection_manual_aged = 1 and nmd.value >= '2020-10-32' and nmd.value <= '2020-11-31'
+ORDER BY NMD asc
